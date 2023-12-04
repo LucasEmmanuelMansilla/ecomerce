@@ -1,6 +1,6 @@
 import React from 'react';
-import {View, ScrollView} from 'react-native';
-import {Data} from '../../../types/types';
+import {View} from 'react-native';
+import type {Data} from '../../../types/types';
 import CardCategoriesContainer from '../../components/CardCategoriesContainer';
 import CardFeaturedProductsContainer from '../../components/CardFeaturedProductsContainer';
 import LandingBannerContainer from '../../components/LandingBannerContainer';
@@ -13,13 +13,11 @@ type Props = {
 export default function LandingUI({data}: Props) {
   return (
     <View style={GlobalStyles.pagesContainer}>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{paddingBottom: 60}}>
+      <View>
         <LandingBannerContainer />
         <CardCategoriesContainer />
         <CardFeaturedProductsContainer landing data={data.slice(0, 2)} />
-      </ScrollView>
+      </View>
     </View>
   );
 }

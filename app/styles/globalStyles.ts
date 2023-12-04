@@ -14,7 +14,6 @@ export const GlobalStyles = StyleSheet.create({
   pagesContainer: {
     flex: 1,
     backgroundColor: 'white',
-    marginTop: hp('4%'),
   },
   allProductsContainer: {
     paddingTop: hp('9%'),

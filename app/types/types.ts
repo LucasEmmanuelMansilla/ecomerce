@@ -18,7 +18,18 @@ export type CartStackScren = {
 };
 
 export type RootStackNavigator = {
+  TopNavigator: undefined;
   ContextStackNavigator: undefined;
-  CartStackNavigator: undefined;
+};
+
+export type TopTabNavigator = {
   LandingStackNavigator: undefined;
+  CartStackNavigator: undefined;
+  UserProfileStackNavigator: undefined;
+};
+
+export type UserProfileStackScreen = {
+  User: undefined;
+  EditProfile: undefined;
+  EditPassword: undefined;
 };
