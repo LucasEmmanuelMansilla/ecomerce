@@ -1,8 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 import UserUI from './UserUI';
 
-export default class User extends Component {
-  render() {
-    return <UserUI />;
-  }
+export default function User() {
+  return <UserUI />;
 }

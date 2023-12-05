@@ -1,7 +1,24 @@
-import {View, Text, Image} from 'react-native';
+import {View, Image} from 'react-native';
 import React from 'react';
-
+import {useQuery} from '@tanstack/react-query';
 export default function UserUI() {
+  const fetchData = async () => {
+    return await fetch('https://jsonplaceholder.typicode.com/todos/1')
+      .then(response => response.json())
+      .then(data => {
+        console.log('dataaaaaa: ', data);
+        return data;
+      })
+      .catch(error => {
+        console.error('errorrr: ', error);
+        return false;
+      });
+  };
+  const {isError} = useQuery({
+    queryKey: ['user'],
+    queryFn: async () => await fetchData(),
+  });
+  console.log('🚀 ~ file: UserUI.tsx:19 ~ UserUI ~ isError:', isError);
   return (
     <View>
       <Image

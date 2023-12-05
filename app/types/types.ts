@@ -33,3 +33,8 @@ export type UserProfileStackScreen = {
   EditProfile: undefined;
   EditPassword: undefined;
 };
+
+export type LoginAndRegisterStackScreen = {
+  Login: undefined;
+  Register: undefined;
+};

@@ -2,11 +2,12 @@ import React, {useEffect} from 'react';
 import {LogBox} from 'react-native';
 import RootNavigator from './navigation';
 import 'react-native-gesture-handler';
-import {Provider} from 'react-redux';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import store from './redux/root';
+
+import {QueryClientProvider, QueryClient} from '@tanstack/react-query';
 
 export default function App() {
+  const queryClient = new QueryClient();
   useEffect(() => {
     LogBox.ignoreLogs([
       'VirtualizedLists should never be nested',
@@ -18,10 +19,10 @@ export default function App() {
     ]);
   }, []);
   return (
-    <Provider store={store}>
+    <QueryClientProvider client={queryClient}>
       <SafeAreaProvider>
         <RootNavigator />
       </SafeAreaProvider>
-    </Provider>
+    </QueryClientProvider>
   );
 }

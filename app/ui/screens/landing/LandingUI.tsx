@@ -10,13 +10,13 @@ type Props = {
   data: Data[];
 };
 
-export default function LandingUI({data}: Props) {
+export default function LandingUI() {
   return (
     <View style={GlobalStyles.pagesContainer}>
       <View>
         <LandingBannerContainer />
         <CardCategoriesContainer />
-        <CardFeaturedProductsContainer landing data={data.slice(0, 2)} />
+        <CardFeaturedProductsContainer landing data={[]} />
       </View>
     </View>
   );
