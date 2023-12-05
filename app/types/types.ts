@@ -1,3 +1,5 @@
+import {Animated} from 'react-native';
+
 export interface Data {
   createdAt: string;
   product: string;
@@ -37,4 +39,28 @@ export type UserProfileStackScreen = {
 export type LoginAndRegisterStackScreen = {
   Login: undefined;
   Register: undefined;
+};
+
+export type CustomTopTabProps = {
+  state: {
+    routes: Array<{
+      key: string;
+      name: string;
+      params: {};
+    }>;
+    index: number;
+  };
+  descriptors: {
+    [key: string]: {
+      options: {
+        tabBarAccessibilityLabel: string;
+        tabBarTestID: string;
+      };
+    };
+  };
+  navigation: {
+    emit: (event: any) => void;
+    navigate: (routeName: string, params?: {}) => void;
+  };
+  position: Animated.Value;
 };
