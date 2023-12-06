@@ -1,32 +1,19 @@
 import React from 'react';
 import {Animated, View, TouchableOpacity} from 'react-native';
-import {manageIcon} from './manageIcon';
-import {CustomTopTabProps} from '../types/types';
+import {manageScreensIcon} from '../utils/manageIcon';
+import {CustomTopTabProps, Route} from '../types/types';
 
-const CustomTopTab: React.FC<CustomTopTabProps> = ({
-  state,
-  descriptors,
-  navigation,
-  position,
-}) => {
+const CustomTopTab = ({state, navigation, position}: CustomTopTabProps) => {
   const handleTabPress = (route: any) => {
     if (!isRouteFocused(route)) {
       navigation.navigate(route.name, route.params);
     }
   };
 
-  const handleTabLongPress = (route: any) => {
-    navigation.emit({
-      type: 'tabLongPress',
-      target: route.key,
-    });
-  };
-
   const isRouteFocused = (route: any) =>
     state.index === state.routes.indexOf(route);
 
-  const renderTab = (route: any, index: number) => {
-    const {options} = descriptors[route.key];
+  const renderTab = (route: Route, index: number) => {
     const isFocused = isRouteFocused(route);
 
     const inputRange = state.routes.map((_, i) => i);
@@ -37,13 +24,10 @@ const CustomTopTab: React.FC<CustomTopTabProps> = ({
 
     return (
       <TouchableOpacity
-        key={index}
+        key={String(index)}
         accessibilityRole="button"
         accessibilityState={{selected: isFocused}}
-        accessibilityLabel={options.tabBarAccessibilityLabel}
-        testID={options.tabBarTestID}
         onPress={() => handleTabPress(route)}
-        onLongPress={() => handleTabLongPress(route)}
         style={{
           flex: 1,
           justifyContent: 'center',
@@ -55,7 +39,7 @@ const CustomTopTab: React.FC<CustomTopTabProps> = ({
             opacity,
             alignItems: 'center',
           }}>
-          {manageIcon(route.name)}
+          {manageScreensIcon(route.name)}
         </Animated.View>
       </TouchableOpacity>
     );

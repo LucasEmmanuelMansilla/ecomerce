@@ -28,6 +28,7 @@ export type TopTabNavigator = {
   LandingStackNavigator: undefined;
   CartStackNavigator: undefined;
   UserProfileStackNavigator: undefined;
+  Search: undefined;
 };
 
 export type UserProfileStackScreen = {
@@ -41,26 +42,20 @@ export type LoginAndRegisterStackScreen = {
   Register: undefined;
 };
 
+export type Route = {
+  key: string | number;
+  name: string;
+  params: {} | undefined;
+};
+
 export type CustomTopTabProps = {
   state: {
-    routes: Array<{
-      key: string;
-      name: string;
-      params: {};
-    }>;
+    routes: Array<Route>;
     index: number;
-  };
-  descriptors: {
-    [key: string]: {
-      options: {
-        tabBarAccessibilityLabel: string;
-        tabBarTestID: string;
-      };
-    };
   };
   navigation: {
     emit: (event: any) => void;
-    navigate: (routeName: string, params?: {}) => void;
+    navigate: (routeName: string | null, params?: {}) => void;
   };
   position: Animated.Value;
 };
